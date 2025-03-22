@@ -1,0 +1,20 @@
+.tracking {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .timeline {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .timeline-step {
+    text-align: center;
+  }
+  .timeline-circle {
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
