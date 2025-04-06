@@ -43,7 +43,7 @@ A logistics platform for booking and tracking machinery/tools shipments across E
 ## **🚀 Installation**
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/machinery-shipping-app.git
+git clone  https://github.com/kalidM/CMH-machinery-shipping-app.git
 
 # Navigate to project directory
 cd machinery-shipping-app
