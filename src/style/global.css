@@ -1,0 +1,21 @@
+:root {
+    --primary: #3498db;
+    --error: #e74c3c;
+  }
+  
+  .loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,0.8);
+  }
+  
+  .error-alert {
+    padding: 1rem;
+    background: #fdecea;
+    border-left: 4px solid var(--error);
+  }
