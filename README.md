@@ -1,7 +1,7 @@
 
 # **Machinery Shipping App** 🚛
 
-![App Screenshot](https://i.imgur.com/JKvQ2aP.png)
+![App Screenshot](https://imgur.com/a/nsZBZFl)
 
 A logistics platform for booking and tracking machinery/tools shipments across Ethiopia.
 
