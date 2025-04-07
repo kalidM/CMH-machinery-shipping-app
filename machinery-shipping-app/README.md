@@ -1,12 +1,6 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 # **Machinery Shipping App** 🚛
-=======
-
-
-# ** CHM Machinery Shipping App** 🚛
->>>>>>> f52dce92ddf0f96c83fd597dce9471938609f63d
 
 ![App Screenshot](https://imgur.com/VYiecpQ)
 
@@ -195,7 +189,6 @@ function LiveMap({ shipmentId, liveMode = true }) {
 4. **Type Safety**  
    - PropTypes for component props
    - Consistent data structures
-<<<<<<< HEAD
 =======
 # Getting Started with Create React App
 
@@ -268,6 +261,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 >>>>>>> d137148 (Initialize Firebase configuration AND Adding  Firebase authentication with email/password)
-=======
-
->>>>>>> f52dce92ddf0f96c83fd597dce9471938609f63d

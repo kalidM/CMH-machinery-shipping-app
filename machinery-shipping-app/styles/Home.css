@@ -1,0 +1,16 @@
+.home {
+    text-align: center;
+  }
+  .hero {
+    background: url('path-to-hero-image.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 20px;
+  }
+  .features {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+  }
+  .feature {
+    width: 30%;
+  }
