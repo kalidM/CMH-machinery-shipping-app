@@ -1,15 +1,35 @@
-import { Suspense } from 'react';
-import { Loader } from '../components/UI/Loader';
-import HeroSection from '../components/Home/HeroSection';
-import Features from '../components/Home/Features';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Home.css';
 
-export default function Home() {
+const Home = () => {
   return (
-    <Suspense fallback={<Loader />}>
-      <main className="home-page">
-        <HeroSection />
-        <Features />
-      </main>
-    </Suspense>
+    <div className="home-container">
+      <header className="hero-section">
+        <h1>Machinery Shipping Solutions</h1>
+        <p className="hero-subtitle">Reliable transport for heavy equipment across Ethiopia</p>
+        <Link to="/booking" className="cta-button">Get Started</Link>
+      </header>
+
+      <section className="features-section">
+        <div className="feature-card">
+          <div className="feature-icon">🚛</div>
+          <h3>Real-Time Tracking</h3>
+          <p>Monitor your shipments live with GPS technology</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">💰</div>
+          <h3>Competitive Pricing</h3>
+          <p>Affordable rates for businesses of all sizes</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">🛡️</div>
+          <h3>Secure Transport</h3>
+          <p>Insured and protected machinery handling</p>
+        </div>
+      </section>
+    </div>
   );
-}
+};
+
+export default Home;

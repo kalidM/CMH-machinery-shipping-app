@@ -1,15 +1,18 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+// Modern Firebase v9+ modular imports
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID
+  apiKey: "AIzaSyAislyUtvDY41D9y3pOXjxRSAbTQUa_fkA",
+  authDomain: "chm-machinery-shipping.firebaseapp.com",
+  projectId: "chm-machinery-shipping",
+  storageBucket: "chm-machinery-shipping.firebasestorage.app",
+  messagingSenderId: "770737852351",
+  appId: "1:770737852351:web:45dda2c471450c0ccf5b0a",
+  measurementId: "G-VVJW1KF7Q4"
 };
+
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
