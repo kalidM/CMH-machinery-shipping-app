@@ -68,15 +68,7 @@ const ProductDetail = () => {
         <p><strong>GST:</strong> ${product.gst}</p>
         <p><strong>Total:</strong> ${product.total}</p>
         <label><input type="checkbox" defaultChecked /> Pick Up</label>
-        <Link 
-          to={{
-            pathname: "/PaymentPage",
-            state: { totalPrice: product.total }
-          }} 
-          className="order-btn"
-        >
-            order now
-            </Link>
+        <button className="order-btn"><Link to="/DeliveryDetail">Place Order</Link></button>
       </div>
     </div>
   );

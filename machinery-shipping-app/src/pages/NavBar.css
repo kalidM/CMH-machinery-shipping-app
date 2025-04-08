@@ -3,6 +3,9 @@
     display: flex;
    justify-content: space-between;
   height: 60px;
+  background-color: #f8f9fa;
+
+  
   }
   .brand {
     display: flex;
@@ -28,11 +31,43 @@ li:hover{
     color: yellow;
 }
 
-button {
-   background-color: yellow; 
-   border-radius: 2rem;
-   border: none;
-   width: 4rem;
-}
+
+
+
+  
+
+  ul li a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.25s ease-in-out;
+  }
+  
+  ul li a:hover {
+    color: #1e90ff; /* Dodger blue */
+  }
+
+
+  .signup button {
+    background-color: #0077cc; /* Primary blue */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup button a {
+    color: #fff; /* White text */
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .signup button:hover {
+    background-color: #005fa3; /* Darker blue on hover */
+  }
+  
+  
 
  

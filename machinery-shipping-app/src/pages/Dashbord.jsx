@@ -55,10 +55,11 @@ const categories = ['Farming', 'Construction', 'Tools', 'Gardening'];
 export default function Dashboard() {
   const [showCategories, setShowCategories] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const filtered = activeCategory === 'All'
-    ? products
-    : products.filter(p => p.category === activeCategory);
+    ? products.filter(product => product.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    : products.filter(product => product.category === activeCategory && product.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <div className="dashboard">
@@ -80,18 +81,32 @@ export default function Dashboard() {
       </aside>
 
       <main className="content">
-  <h1>Dashboard</h1>
-  <div className="product-grid">
-    {filtered.map(product => (  
-      <div key={product.id} className="product-card">
-        <img src={product.image} alt={product.title} />
-        <h4>{product.title}</h4>
-        <p>{product.desc}</p>
-        <Link to={`/product/${product.id}`} className="view-button">View Details</Link>
-      </div>
-    ))}
-  </div>
-</main>
+        <div className="search-bar-container">
+          <input
+            type="text"
+            placeholder="Search Products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-bar"
+          />
+          <button className="search-btn">Search</button>
+        </div>
+        <h1>Dashboard</h1>
+        <div className="product-grid">
+          {filtered.length > 0 ? (
+            filtered.map(product => (  
+              <div key={product.id} className="product-card">
+                <img src={product.image} alt={product.title} />
+                <h4>{product.title}</h4>
+                <p>{product.desc}</p>
+                <Link to={`/product/${product.id}`} className="view-button">View Details</Link>
+              </div>
+            ))
+          ) : (
+            <p>No products found matching your search criteria.</p>
+          )}
+        </div>
+      </main>
     </div>
   );
 }

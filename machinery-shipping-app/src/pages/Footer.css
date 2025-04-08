@@ -33,7 +33,7 @@
   }
   
   .subscribe input {
-    max-width: 50%;
+    max-width: 70%;
     padding: 0.5rem;
     border-radius: 6px;
     border: none;
@@ -42,7 +42,7 @@
   }
   
   .subscribe button {
-    max-width: 100%;
+    max-width: 20%;
     background-color: #fbbf24;
     color: #1e293b;
     padding: 0.5rem 1rem;

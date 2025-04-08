@@ -10,6 +10,7 @@ import ProductDetail from './pages/ProductDetail';
 import DeliveryDetails from './pages/DeliveryDetails';
 import PaymentPage from './pages/PaymentPage';
 import OrderTracking from './pages/OrderTracking';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Signup" element={<Signup />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/searchresult" element={<SearchResults />} />
         <Route path="/product/:id" element={<ProductDetail  />} />
