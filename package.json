@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@firebase/auth": "^1.10.0",
+    "@firebase/firestore": "^4.7.10",
+    "firebase": "^11.6.0",
     "formik": "^2.4.6",
     "yup": "^1.6.1"
   }

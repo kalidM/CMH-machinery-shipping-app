@@ -1,48 +1,37 @@
+/* Add any CSS to style your forms as needed */
 .register-container {
     max-width: 400px;
-    margin: 50px auto;
+    margin: auto;
     padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .register-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
+  .register-form .form-group {
     margin-bottom: 15px;
   }
   
-  label {
+  .register-form label {
     font-weight: bold;
-    margin-bottom: 5px;
   }
   
-  input,
-  textarea {
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  textarea {
+  .register-form input,
+  .register-form textarea {
     width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9em;
   }
   
   button {
+    width: 100%;
     padding: 10px;
-    font-size: 16px;
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -50,13 +39,12 @@
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #45a049;
+  button:disabled {
+    background-color: #ddd;
   }
   
-  .error {
-    color: red;
-    font-size: 12px;
+  button:hover {
+    background-color: #45a049;
   }
   
   .login-link {
@@ -65,6 +53,7 @@
   }
   
   .login-link a {
-    color: #007BFF;
+    color: #007bff;
+    text-decoration: none;
   }
   

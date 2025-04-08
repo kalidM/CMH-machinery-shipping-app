@@ -1,72 +1,99 @@
 import React, { useState } from 'react';
 import './Signup.css';
+import { auth, db } from '../config/firebase'; // make sure firebase is properly configured
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
-const Register = () => {
+const Signup = () => {
+  const { signup } = useAuth();
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [businessName, setBusinessName] = useState('');
   const [businessType, setBusinessType] = useState('');
   const [businessAddress, setBusinessAddress] = useState('');
-  
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     let formErrors = {};
     let isValid = true;
+    setError('');
+    setLoading(true);
 
-    // Validate fullName
+    // Form validation
     if (!fullName || fullName.length < 3) {
       formErrors.fullName = 'Full Name must be at least 3 characters';
       isValid = false;
     }
 
-    // Validate email
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+(com|net|org|edu|gov|et)$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!email || !emailRegex.test(email)) {
       formErrors.email = 'Please enter a valid email address';
       isValid = false;
     }
 
-    // Validate phone number
-    const phoneRegex = /^\d{10}$/;
+    const phoneRegex = /^[0-9]{10}$/;
     if (!phone || !phoneRegex.test(phone)) {
       formErrors.phone = 'Phone number must be 10 digits';
       isValid = false;
     }
 
-    // Validate business name
     if (!businessName) {
       formErrors.businessName = 'Business Name is required';
       isValid = false;
     }
 
-    // Validate business type
     if (!businessType) {
       formErrors.businessType = 'Business Type is required';
       isValid = false;
     }
 
-    // Validate business address
     if (!businessAddress) {
       formErrors.businessAddress = 'Business Address is required';
+      isValid = false;
+    }
+
+    if (!password || password.length < 6) {
+      formErrors.password = 'Password must be at least 6 characters';
       isValid = false;
     }
 
     setErrors(formErrors);
 
     if (isValid) {
-      // Submit form data (you can send this to a backend)
-      console.log({
-        fullName,
-        email,
-        phone,
-        businessName,
-        businessType,
-        businessAddress,
-      });
+      try {
+        // Create user with Firebase Authentication
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Add additional user data to Firestore
+        await setDoc(doc(db, 'users', user.uid), {
+          fullName,
+          email,
+          phone,
+          businessName,
+          businessType,
+          businessAddress,
+          uid: user.uid,
+        });
+
+        // Redirect to the dashboard after successful registration
+        navigate('/Dashboard');
+      } catch (error) {
+        setError('Failed to create an account: ' + error.message);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
     }
   };
 
@@ -80,7 +107,6 @@ const Register = () => {
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            placeholder="Jane Doe"
           />
           {errors.fullName && <span className="error">{errors.fullName}</span>}
         </div>
@@ -91,7 +117,6 @@ const Register = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="janedoe@example.com"
           />
           {errors.email && <span className="error">{errors.email}</span>}
         </div>
@@ -102,7 +127,6 @@ const Register = () => {
             type="text"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="0912345678"
           />
           {errors.phone && <span className="error">{errors.phone}</span>}
         </div>
@@ -113,7 +137,6 @@ const Register = () => {
             type="text"
             value={businessName}
             onChange={(e) => setBusinessName(e.target.value)}
-            placeholder="Jane's Cafe"
           />
           {errors.businessName && <span className="error">{errors.businessName}</span>}
         </div>
@@ -124,7 +147,6 @@ const Register = () => {
             type="text"
             value={businessType}
             onChange={(e) => setBusinessType(e.target.value)}
-            placeholder="Coffee Shop"
           />
           {errors.businessType && <span className="error">{errors.businessType}</span>}
         </div>
@@ -134,19 +156,32 @@ const Register = () => {
           <textarea
             value={businessAddress}
             onChange={(e) => setBusinessAddress(e.target.value)}
-            placeholder="123 Main St"
           ></textarea>
           {errors.businessAddress && <span className="error">{errors.businessAddress}</span>}
         </div>
 
-        <button type="submit" className="submit-btn">Submit</button>
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {errors.password && <span className="error">{errors.password}</span>}
+        </div>
+
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+
+        <button type="submit" disabled={loading}>
+          {loading ? 'Signing Up...' : 'Sign Up'}
+        </button>
       </form>
 
       <p className="login-link">
-        Already have an account? <a href="/Login">Login</a>
+        Already have an account? <a href="/login">Login</a>
       </p>
     </div>
   );
 };
 
-export default Register;
+export default Signup;

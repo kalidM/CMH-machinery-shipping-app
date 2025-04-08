@@ -1,69 +1,104 @@
-import React, { useState } from 'react';
+// Login.js
+import React, { useState, useEffect } from 'react';
+import { auth } from '../config/firebase';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({});
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { currentUser } = useAuth(); // Get current user from context
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    let formErrors = {};
-    let isValid = true;
-
-    // Validate email
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+(com|net|org|edu|gov|et)$/;
-    if (!email || !emailRegex.test(email)) {
-      formErrors.email = 'Please enter a valid email address';
-      isValid = false;
+  // Redirect the user to dashboard if already logged in
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/Dashboard');
     }
+  }, [currentUser, navigate]);
 
-    // Validate password
-    if (!password || password.length < 6) {
-      formErrors.password = 'Password must be at least 6 characters';
-      isValid = false;
+  // Validate email format
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Validate password strength
+  const isStrongPassword = (password) => {
+    // At least 6 characters, one number, one uppercase letter
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+    return passwordRegex.test(password);
+  };
+
+  // Form validation
+  const validateForm = () => {
+    if (!isValidEmail(email)) {
+      setError('Please enter a valid email address.');
+      return false;
     }
+    if (!isStrongPassword(password)) {
+      setError('Password must be at least 6 characters, contain one uppercase letter and one number.');
+      return false;
+    }
+    return true;
+  };
 
-    setErrors(formErrors);
+  // Handle login form submission
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError('');
+    if (!validateForm()) return;
 
-    if (isValid) {
-      // Proceed with login logic (e.g., API call)
-      console.log({ email, password });
+    setLoading(true);
+    try {
+      const userCredential = await auth.signInWithEmailAndPassword(email, password);
+      console.log('User logged in:', userCredential.user);
+      navigate('/Dashboard'); // Redirect to dashboard on success
+    } catch (err) {
+      const message =
+        err.code === 'auth/user-not-found'
+          ? 'No user found with this email.'
+          : err.code === 'auth/wrong-password'
+          ? 'Incorrect password.'
+          : 'Failed to log in.';
+      setError(message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="login-container">
       <h2>Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email Address</label>
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>Email:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="janedoe@example.com"
+            required
           />
-          {errors.email && <span className="error">{errors.email}</span>}
         </div>
-
-        <div className="form-group">
-          <label>Password</label>
+        <div>
+          <label>Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="******"
+            required
           />
-          {errors.password && <span className="error">{errors.password}</span>}
         </div>
-
-        <button type="submit" className="submit-btn">Login</button>
+        {error && <p className="error-message">{error}</p>} {/* Display error message */}
+        <button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Log In'}
+        </button>
       </form>
-
-      <p className="signup-link">
-        Don't have an account? <a href="/Signup">Sign Up</a>
+      <p>
+        Don't have an account? <a href="/signup">Sign Up</a>
       </p>
     </div>
   );
