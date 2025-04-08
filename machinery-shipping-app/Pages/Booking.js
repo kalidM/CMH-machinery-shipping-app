@@ -1,82 +1,80 @@
-// src/pages/Booking.js
 import React, { useState } from 'react';
-import '../styles/Booking.css'; // Add your CSS file for styling
+import './Booking.css';
+import { FiMapPin, FiCalendar, FiPackage } from 'react-icons/fi';
 
 const Booking = () => {
   const [formData, setFormData] = useState({
-    pickupLocation: '',
-    deliveryLocation: '',
-    machineryDetails: '',
+    pickup: '',
+    delivery: '',
     date: '',
-    time: '',
+    machineryType: '',
+    dimensions: ''
   });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
-    alert('Shipment booked successfully!');
+    console.log('Booking submitted:', formData);
+    // Add your booking logic here
   };
 
   return (
-    <div className="booking">
-      <h1>Book a Shipment</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Pickup Location:
-          <input
-            type="text"
-            name="pickupLocation"
-            value={formData.pickupLocation}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Delivery Location:
-          <input
-            type="text"
-            name="deliveryLocation"
-            value={formData.deliveryLocation}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Machinery Details:
-          <textarea
-            name="machineryDetails"
-            value={formData.machineryDetails}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Preferred Date:
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Preferred Time:
-          <input
-            type="time"
-            name="time"
-            value={formData.time}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <button type="submit">Get Quote</button>
-      </form>
+    <div className="booking-page">
+      <div className="booking-card">
+        <h2>Book Your Shipment</h2>
+        <p className="subtitle">Fill in the details below</p>
+        
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label><FiMapPin /> Pickup Location</label>
+            <input
+              type="text"
+              value={formData.pickup}
+              onChange={(e) => setFormData({...formData, pickup: e.target.value})}
+              placeholder="Addis Ababa"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label><FiMapPin /> Delivery Location</label>
+            <input
+              type="text"
+              value={formData.delivery}
+              onChange={(e) => setFormData({...formData, delivery: e.target.value})}
+              placeholder="Hawassa"
+              required
+            />
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label><FiCalendar /> Pickup Date</label>
+              <input
+                type="date"
+                value={formData.date}
+                onChange={(e) => setFormData({...formData, date: e.target.value})}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label><FiPackage /> Machinery Type</label>
+              <select
+                value={formData.machineryType}
+                onChange={(e) => setFormData({...formData, machineryType: e.target.value})}
+                required
+              >
+                <option value="">Select</option>
+                <option value="excavator">Excavator</option>
+                <option value="bulldozer">Bulldozer</option>
+                <option value="crane">Crane</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" className="submit-btn">Get Instant Quote</button>
+        </form>
+      </div>
     </div>
   );
 };

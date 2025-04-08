@@ -1,46 +1,59 @@
-// src/pages/Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Home.css'; // Add your CSS file for styling
+import './Home.css';
+import heroImage from '../assets/hero-image.jpg'; // Add your image
+import logo from '../assets/logo.png'; // Add your logo image
+import { FiTruck, FiDollarSign, FiShield, FiSearch, FiUser } from 'react-icons/fi';
 
 const Home = () => {
   return (
     <div className="home">
       {/* Navbar */}
       <nav className="navbar">
-        <div className="logo">Machinery Shipping</div>
-        <ul className="nav-links">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/booking">Book a Shipment</Link></li>
-        </ul>
+        <div className="navbar-left">
+          <img src={logo} alt="CHM Shipping Logo" className="logo" />
+        </div>
+        <div className="navbar-center">
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/suppliers" className="nav-link">Search Suppliers</Link>
+          <Link to="/orders" className="nav-link">Order Details</Link>
+        </div>
+        <div className="navbar-right">
+          <FiSearch className="nav-icon" />
+          <FiUser className="nav-icon" />
+        </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="hero">
-        <h1>Efficient Machinery Shipping Across Ethiopia</h1>
-        <p>Reliable, affordable, and fast shipping services for your tools and machinery.</p>
-        <Link to="/booking" className="cta-button">Get Started</Link>
-      </div>
+      <section className="hero">
+        <div className="hero-content">
+          <h1>Heavy Machinery Transport <span>Made Simple</span></h1>
+          <p className="subtitle">Reliable, tracked shipping across Ethiopia</p>
+          <Link to="/booking" className="cta-button">Book Now →</Link>
+        </div>
+        <div className="hero-image">
+          <img src={heroImage} alt="Truck transporting machinery" />
+        </div>
+      </section>
 
-      {/* Features Section */}
-      <div className="features">
-        <div className="feature">
-          <span>🚚</span>
-          <h3>Real-Time Tracking</h3>
-          <p>Track your shipments in real-time with our advanced tracking system.</p>
+      {/* Features Grid */}
+      <section className="features">
+        <div className="feature-card">
+          <FiTruck className="feature-icon" />
+          <h3>Real-Time GPS Tracking</h3>
+          <p>Monitor your equipment 24/7 with live updates</p>
         </div>
-        <div className="feature">
-          <span>💵</span>
-          <h3>Affordable Pricing</h3>
-          <p>Get competitive prices for shipping your machinery and tools.</p>
+        <div className="feature-card">
+          <FiDollarSign className="feature-icon" />
+          <h3>Transparent Pricing</h3>
+          <p>No hidden fees with instant quotes</p>
         </div>
-        <div className="feature">
-          <span>🛡️</span>
-          <h3>Reliable Service</h3>
-          <p>Trusted by businesses and individuals across Ethiopia.</p>
+        <div className="feature-card">
+          <FiShield className="feature-icon" />
+          <h3>Fully Insured</h3>
+          <p>Your machinery protected from pickup to delivery</p>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

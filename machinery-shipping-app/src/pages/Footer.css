@@ -1,0 +1,80 @@
+.footer {
+    background-color: #1e293b;
+    color: #fff;
+    padding: 2rem;
+  }
+  
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .company-info {
+    flex: 1 1 300px;
+  }
+  
+  .footer-logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .company-name {
+    font-size: 1.5rem;
+    margin: 0.2rem 0;
+  }
+  
+  .subscribe {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .subscribe input {
+    max-width: 50%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    flex: 1;
+  }
+  
+  .subscribe button {
+    max-width: 100%;
+    background-color: #fbbf24;
+    color: #1e293b;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  
+  .footer-links h4 {
+    margin-bottom: 0.8rem;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  
+  .footer-links li:hover {
+    text-decoration: underline;
+  }
+  

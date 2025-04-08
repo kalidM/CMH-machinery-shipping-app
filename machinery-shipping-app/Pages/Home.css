@@ -4,6 +4,11 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+  background-image: url('../assets/Meteor.svg');
+  background-repeat: no-repeat;
+  background-size: cover; /* or contain or custom sizing */
+  background-position: center;
+  min-height: 100vh;
 }
 
 /* Hero Section */

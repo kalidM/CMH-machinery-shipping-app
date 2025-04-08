@@ -1,0 +1,38 @@
+/* Navigation Bar */
+.container {
+    display: flex;
+   justify-content: space-between;
+  
+  }
+  .brand {
+    display: flex;
+    justify-content: start;
+  }
+
+ 
+  ul {
+    list-style-type: none; 
+    padding: 0; 
+    text-align: center; 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+li {
+    display: inline-block; 
+
+}
+
+li:hover{
+    color: yellow;
+}
+
+button {
+   background-color: yellow; 
+   border-radius: 2rem;
+   border: none;
+   width: 4rem;
+}
+
+ 
