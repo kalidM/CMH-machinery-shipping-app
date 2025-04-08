@@ -59,6 +59,7 @@
   }
   
   .order-btn {
+    display: block;
     background: #ffc107;
     border: none;
     padding: 12px 20px;
@@ -67,6 +68,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s;
+    width: 100%;
   }
   
   .order-btn:hover {

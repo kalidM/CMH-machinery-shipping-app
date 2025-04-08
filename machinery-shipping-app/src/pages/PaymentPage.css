@@ -1,0 +1,145 @@
+.payment-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .payment-details {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  select, button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .status {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 10px;
+  }
+  
+  .status.success {
+    color: green;
+  }
+  
+  .status.error {
+    color: red;
+  }
+  
+  .confirmation {
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .confirmation h3 {
+    margin-bottom: 10px;
+  }
+  
+  .confirmation p {
+    font-size: 1rem;
+  }
+
+  .payment-page-container {
+    display: flex;
+    justify-content: center;  /* Align content horizontally in the center */
+    align-items: center;      /* Align content vertically in the center */
+    height: 100vh;            /* Full viewport height */
+    background-color: #f4f4f4; /* Background color for the page */
+  }
+  
+  .payment-form {
+    width: 100%;
+    max-width: 500px;          /* Limit the width of the form */
+    padding: 20px;
+    background-color: #fff;    /* White background for the form */
+    border-radius: 8px;        /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow around the form */
+  }
+  
+  h1 {
+    text-align: center;         /* Center-align the heading */
+    margin-bottom: 20px;        /* Space below the heading */
+  }
+  
+  .form-group {
+    margin-bottom: 15px;        /* Space between form groups */
+  }
+  
+  label {
+    display: block;             /* Make labels block-level elements */
+    margin-bottom: 5px;         /* Space between label and input */
+    font-weight: bold;          /* Make label text bold */
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  textarea {
+    width: 100%;                /* Full width for input fields */
+    padding: 10px;              /* Padding inside the fields */
+    margin-top: 5px;            /* Space above the input field */
+    border: 1px solid #ddd;    /* Light border around the inputs */
+    border-radius: 4px;         /* Rounded corners for inputs */
+    font-size: 16px;            /* Set font size */
+  }
+  
+  textarea {
+    resize: vertical;           /* Allow vertical resize for text area */
+  }
+  
+  .submit-btn {
+    width: 100%;                /* Full width button */
+    padding: 12px;
+    background-color: #007BFF;  /* Primary button color */
+    color: white;               /* White text on button */
+    border: none;               /* Remove border */
+    border-radius: 4px;         /* Rounded corners */
+    font-size: 16px;            /* Font size for button */
+    cursor: pointer;            /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;  /* Darker blue on hover */
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  

@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import "./PaymentPage.css";
 
-import './ProductDetail.css';
 const products = [
     { id: 1, title: 'Green Tractor', desc: 'Efficient farming with the latest model.', offer: '15% off', category: 'Farming', image: '../assets/tractor.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
       specs: 'Specs including weight, dimensions, and features.',
@@ -51,35 +50,58 @@ const products = [
   ];
 
 
-const ProductDetail = () => {
-  const { id } = useParams();
-  const product = products.find(p => p.id === parseInt(id));
 
-  if (!product) return <p>Product not found.</p>;
+const PaymentPage = () => {
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [amount, setAmount] = useState(100); // example amount
+  const [paymentStatus, setPaymentStatus] = useState('');
+  const [transactionId, setTransactionId] = useState('');
+
+  const handlePayment = () => {
+    // Simulate payment processing
+    const transactionId = `TXN-${Math.floor(Math.random() * 100000)}`;
+    setTransactionId(transactionId);
+    setPaymentStatus('Payment Successful');
+  };
 
   return (
-    <div className="product-detail-container">
-      <div className="product-card">
-        <img src={product.image} alt={product.name} className="product-image" />
-        <h2>{product.name}</h2>
-        <p className="description">{product.fullDescription}</p>
-        <div className="spec-box">{product.specs}</div>
-        <p><strong>Price:</strong> ${product.price}</p>
-        <p><strong>GST:</strong> ${product.gst}</p>
-        <p><strong>Total:</strong> ${product.total}</p>
-        <label><input type="checkbox" defaultChecked /> Pick Up</label>
-        <Link 
-          to={{
-            pathname: "/PaymentPage",
-            state: { totalPrice: product.total }
-          }} 
-          className="order-btn"
-        >
-            order now
-            </Link>
+    <div className="payment-container">
+      <h2>Payment Page</h2>
+      <div className="payment-details">
+        <label>
+          Payment Method:
+          <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
+            <option value="">Select Payment Method</option>
+            <option value="telebirr">TeleBirr</option>
+            <option value="cbe_birr">CBE Birr</option>
+            <option value="other">Other Local Payment</option>
+          </select>
+        </label>
+        
+        <label>
+          Amount: ${amount}
+        </label>
+
+        <button onClick={handlePayment}>Make Payment</button>
+
+        {paymentStatus && (
+          <div className={`status ${paymentStatus === 'Payment Successful' ? 'success' : 'error'}`}>
+            {paymentStatus}
+          </div>
+        )}
       </div>
+
+      {paymentStatus === 'Payment Successful' && transactionId && (
+        <div className="confirmation">
+          <h3>Payment Confirmation</h3>
+          <p>Payment Method: {paymentMethod}</p>
+          <p>Amount: ${amount}</p>
+          <p>Transaction ID: {transactionId}</p>
+          <p>Thank you for your order!</p>
+        </div>
+      )}
     </div>
   );
 };
 
-export default ProductDetail;
+export default PaymentPage;

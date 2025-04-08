@@ -1,0 +1,47 @@
+.tracking-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .status-box {
+    margin: 20px 0;
+  }
+  
+  .status {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .status.delivered {
+    color: green;
+  }
+  
+  .status.cancelled-by-user {
+    color: red;
+  }
+  
+  .cancel-btn {
+    background-color: #e53935;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .driver-info {
+    margin-top: 30px;
+    text-align: left;
+  }
+  

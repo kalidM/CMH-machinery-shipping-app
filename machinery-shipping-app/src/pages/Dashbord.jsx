@@ -1,16 +1,53 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
+import { Link } from 'react-router-dom';
 
 const products = [
-  { title: 'Green Tractor', desc: 'Efficient farming with the latest model.', offer: '15% off', category: 'Farming', image: 'tractor.jpg' },
-  { title: 'Red Harvester', desc: 'High capacity for large-scale farming.', offer: '10% off', category: 'Farming', image: 'harvester.jpg' },
-  { title: 'Yellow Bulldozer', desc: 'Multi-functionality for construction needs.', offer: 'Free delivery', category: 'Construction', image: 'bulldozer.jpg' },
-  { title: 'Cordless Drill', desc: 'High-performance drill suitable for various tasks.', offer: 'Limited offer', category: 'Tools', image: 'cordless1.jpg' },
-  { title: 'Circular Saw', desc: 'Efficient cutting with precision and safety.', offer: 'View Offer', category: 'Tools', image: 'saw.jpg' },
-  { title: 'Hammer Drill', desc: 'Ideal for masonry and heavy-duty applications.', offer: 'View Offer', category: 'Tools', image: 'hammer.jpg' },
-  { title: 'Cordless Drill', desc: 'Powerful 18V drill for home and professional use.', offer: 'Shop Now', category: 'Tools', image: 'cordless2.jpg' },
-  { title: 'Table Saw', desc: 'Precision cutting with adjustable angles.', offer: 'Buy Now', category: 'Tools', image: 'table.jpg' },
-  { title: 'Lawn Mower', desc: 'Efficient cutting with a self-propelled design.', offer: 'Order Now', category: 'Gardening', image: 'mower.jpg' },
+  { id: 1, title: 'Green Tractor', desc: 'Efficient farming with the latest model.', offer: '15% off', category: 'Farming', image: '../assets/tractor.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450},
+  { id: 2, title: 'Red Harvester', desc: 'High capacity for large-scale farming.', offer: '10% off', category: 'Farming', image: '../assets/harvester.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450 },
+  { id: 3, title: 'Yellow Bulldozer', desc: 'Multi-functionality for construction needs.', offer: 'Free delivery', category: 'Construction', image: '../assets/bulldozer.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450 },
+  { id: 4, title: 'Cordless Drill', desc: 'High-performance drill suitable for various tasks.', offer: 'Limited offer', category: 'Tools', image: '../assets/cordless1.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450 },
+  { id: 5, title: 'Circular Saw', desc: 'Efficient cutting with precision and safety.', offer: 'View Offer', category: 'Tools', image: '../assets/saw.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450 },
+  { id: 6, title: 'Hammer Drill', desc: 'Ideal for masonry and heavy-duty applications.', offer: 'View Offer', category: 'Tools', image: '../assets/hammer.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450 },
+  { id: 7, title: 'Cordless Drill', desc: 'Powerful 18V drill for home and professional use.', offer: 'Shop Now', category: 'Tools', image: '../assets/cordless2.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450 },
+  { id: 8, title: 'Table Saw', desc: 'Precision cutting with adjustable angles.', offer: 'Buy Now', category: 'Tools', image: '../assets/table.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450 },
+  { id: 9, title: 'Lawn Mower', desc: 'Efficient cutting with a self-propelled design.', offer: 'Order Now', category: 'Gardening', image: '../assets/mower.jpg', fullDescription: 'Industrial trucks used to lift and transport materials over short distances.',
+    specs: 'Specs including weight, dimensions, and features.',
+    price: 19500,
+    gst: 1950,
+    total: 21450 },
 ];
 
 const categories = ['Farming', 'Construction', 'Tools', 'Gardening'];
@@ -43,19 +80,18 @@ export default function Dashboard() {
       </aside>
 
       <main className="content">
-        <h1>Dashboard</h1>
-        <div className="grid">
-          {filtered.map((item, index) => (
-            <div className="card" key={index}>
-              <img src={`../assets/${item.image}`} alt={item.title} />
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
-              <span className="offer">{item.offer}</span>
-              <button>{item.offer.includes('Now') ? item.offer : 'View Details'}</button>
-            </div>
-          ))}
-        </div>
-      </main>
+  <h1>Dashboard</h1>
+  <div className="product-grid">
+    {filtered.map(product => (  
+      <div key={product.id} className="product-card">
+        <img src={product.image} alt={product.title} />
+        <h4>{product.title}</h4>
+        <p>{product.desc}</p>
+        <Link to={`/product/${product.id}`} className="view-button">View Details</Link>
+      </div>
+    ))}
+  </div>
+</main>
     </div>
   );
 }
