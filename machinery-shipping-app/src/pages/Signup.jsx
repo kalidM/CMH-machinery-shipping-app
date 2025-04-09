@@ -85,8 +85,15 @@ const Signup = () => {
           uid: user.uid,
         });
 
+
+        
+        console.log("succusseful before");
         // Redirect to the dashboard after successful registration
-        navigate('/Dashboard');
+        setTimeout(() => {
+          navigate('/Dashboard');
+        }, 500); 
+
+        console.log("succusseful after");
       } catch (error) {
         setError('Failed to create an account: ' + error.message);
       } finally {

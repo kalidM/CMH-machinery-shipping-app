@@ -1,73 +1,75 @@
-/* Navigation Bar */
+/* NavBar.css */
+
 .container {
-    display: flex;
-   justify-content: space-between;
-  height: 60px;
-  background-color: #f8f9fa;
-
-  
-  }
-  .brand {
-    display: flex;
-    justify-content: start;
-  }
-
- 
-  ul {
-    list-style-type: none; 
-    padding: 0; 
-    text-align: center; 
-    display: flex; 
-    justify-content: center; 
-    gap: 20px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #edf0f3; /* Light background */
+  padding: 15px 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-li {
-    display: inline-block; 
-
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-li:hover{
-    color: yellow;
+.brand h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
 }
 
+ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
 
+ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+}
 
+ul li a:hover {
+  color: #0077cc;
+}
 
-  
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-  ul li a {
-    color: #2c3e50;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.25s ease-in-out;
-  }
-  
-  ul li a:hover {
-    color: #1e90ff; /* Dodger blue */
-  }
+.auth-links span {
+  font-size: 0.95rem;
+  color: #444;
+}
 
+.auth-links button {
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
 
-  .signup button {
-    background-color: #0077cc; /* Primary blue */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .signup button a {
-    color: #fff; /* White text */
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .signup button:hover {
-    background-color: #005fa3; /* Darker blue on hover */
-  }
-  
-  
+.auth-links button:hover {
+  background-color: #005fa3;
+}
 
- 
+.auth-links a {
+  color: #fff;
+  text-decoration: none;
+}
